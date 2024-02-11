@@ -3,3 +3,7 @@ server:
 
 llm:
   mode: local
+
+embedding:
+  ingest_mode: parallel
+  count_workers: 4
