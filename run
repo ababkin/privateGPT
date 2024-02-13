@@ -2,5 +2,10 @@
 
 cd "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" || exit
 
+# Disable any activated virtual environment
+VENV="$( dirname "$( which virtualenv)" )"
+if [ -d "$VENV" ]; then source "$VENV/activate" && deactivate; fi
+
 SUPPRESS_WARNINGS=-Wignore
-PGPT_PROFILES=local,cuda,logger poetry run python $SUPPRESS_WARNINGS -m private_gpt
+export PGPT_PROFILES=local,cuda,logger
+poetry run python $SUPPRESS_WARNINGS -m private_gpt

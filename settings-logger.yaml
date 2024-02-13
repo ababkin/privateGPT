@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/68740136/uvicorn-log-the-errror-message-instead-of-infouvicorn-errorapplicationi
 version: 1
-disable_existing_loggers: False
+disable_existing_loggers: True
 formatters:
   default:
     format: '%(asctime)s - uvicorn - %(levelname)s - %(message)s'
@@ -17,18 +17,17 @@ handlers:
     stream: ext://sys.stdout
 loggers:
   uvicorn.error:
-    level: INFO
+    level: WARN
     handlers:
       - default
     propagate: no
   uvicorn.access:
-    level: INFO
+    level: WARN
     handlers:
       - access
     propagate: no
 root:
-  level: DEBUG
+  level: WARN
   handlers:
     - default
   propagate: no
-
