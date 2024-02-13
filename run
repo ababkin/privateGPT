@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+PGPT_PROFILES=local,cuda poetry run python -m private_gpt
+
