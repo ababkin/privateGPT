@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" || exit
 
-PGPT_PROFILES=local,cuda poetry run python -m private_gpt
-
+SUPPRESS_WARNINGS=-Wignore
+PGPT_PROFILES=local,cuda,logger poetry run python $SUPPRESS_WARNINGS -m private_gpt
