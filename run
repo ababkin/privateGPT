@@ -16,6 +16,7 @@ function help {
 cd "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" || exit
 
 # Disable any activated virtual environment
+# See https://mslinn.com/blog/2021/04/09/python-venvs.html#pvenv
 VENV="$( dirname "$( which virtualenv)" )"
 if [ -d "$VENV" ]; then source "$VENV/activate" && deactivate; fi
 
