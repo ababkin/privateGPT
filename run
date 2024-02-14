@@ -7,5 +7,6 @@ VENV="$( dirname "$( which virtualenv)" )"
 if [ -d "$VENV" ]; then source "$VENV/activate" && deactivate; fi
 
 SUPPRESS_WARNINGS=-Wignore
-export PGPT_PROFILES=local,cuda,logger
-poetry run python $SUPPRESS_WARNINGS -m private_gpt
+export PGPT_PROFILES=local,logger
+poetry run python $SUPPRESS_WARNINGS -m private_gpt \
+  2> >(grep -v 'llama_model_loader\:\|llm_load_print_meta\:') # Filter noisy stderr
